@@ -1,0 +1,377 @@
+/*
+  styles.css
+  Andrew Couture
+  301243770 
+  06/04/2023
+*/
+
+
+/* default margin and padding */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* navbar styling*/
+.navbar {
+  background-color: #333;
+  color: #fff;
+  padding: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* navbar brand styling */
+.navbar-brand {
+  font-size: 25px;
+  font-weight: bold;
+  color: #fff;
+  text-decoration: none;
+}
+
+/* navigation links styling*/
+.navbar-nav {
+  display: flex;
+  align-items: center;
+}
+
+/* navigation items in the navbar */
+.navbar-nav .nav-item {
+  margin-right: 22px; /* Increase the margin-right value for more spacing */
+}
+
+/* links in the navbar */
+.navbar-nav .nav-link {
+  color: #fff;
+  font-size: 16px;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+/* margin adjustment for the last  link in the navbar */
+.navbar-nav .nav-link:last-child {
+  margin-right: 0;
+}
+
+/* hover effect*/
+.navbar-nav .nav-link:hover {
+  color: #f8f9fa;
+}
+
+/* Styling for images */
+img {
+  width: 200px;
+}
+
+/* Styling for the body */
+body {
+  background-color: #f5f5f5; /* Sets the background color*/
+  font-family: Arial, sans-serif; /* sets the font family*/
+  font-size: 16px; /* sets the font size*/
+  color: #333333; /* sets the text color */
+}
+
+/* container styling*/
+.container {
+  max-width: 960px; /* sets the max width */
+  margin: 0 auto; /* centers the container */
+  padding: 22px; /* adds padding */
+}
+
+/* header styling */
+header {
+  background-color: #333333; /* sets the background color */
+  padding: 22px; /* adds padding to the header */
+  color: #ffffff; /* sets the text color for the header */
+}
+
+/* header styling for h1 inside header*/
+header h1 {
+  font-size: 24px; /* sets the font size */
+}
+
+
+main {
+  margin-top: 22px; /* adds margin on the top of the main section */
+}
+
+/* aboutme section styling*/
+.aboutme {
+  background-color: #ffffff; /* sets the background color */
+  padding: 22px; /* adds padding */
+  border-radius: 5px; /* adds rounded corners*/
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* adds a box shadow */
+}
+
+
+.aboutme h1 {
+  font-size: 28px; /* set the font size */
+  margin-bottom: 10px; /* adds margin */
+}
+
+
+.aboutme p {
+  font-size: 18px; /* sets the font size*/
+}
+
+
+footer {
+  background-color: #333333; /* Set the background color */
+  padding: 22px; /* adds padding */
+  color: #ffffff; /* sets the text color */
+  text-align: center; /* centers the text  */
+}
+
+
+footer a {
+  color: #ffffff; /* Set the color of the links in the footer */
+  text-decoration: none; /* removes underline from links */
+}
+
+
+footer a:hover {
+  text-decoration: underline; /* adds underline for hover */
+}
+
+
+.contact-form {
+  background-color: #ffffff; 
+  padding: 22px; 
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* box shadow */
+}
+
+
+.contact-form h1 {
+  font-size: 28px;
+  margin-bottom: 10px; 
+}
+
+
+.contact-form p {
+  font-size: 18px; 
+  margin-bottom: 22px; 
+}
+
+/*contact form styling*/
+#contact-form {
+  margin-top: 22px; 
+}
+
+/* input field styling */
+.form-group {
+  margin-bottom: 15px; 
+}
+
+/* label styling*/
+label {
+  font-weight: bold; /* sets the font weight of labels to bold */
+  font-size: 16px; 
+  display: block; /* turns labels into block-level elements */
+}
+
+/* styling for input fields and text area */
+input,
+textarea {
+  width: 100%; 
+  padding: 10px; 
+  border: 1px solid #dddddd; 
+  border-radius: 5px; 
+  font-size: 16px; 
+  margin-bottom: 10px; 
+}
+
+
+textarea {
+  resize: vertical; /* sets vertical resizing */
+}
+
+
+button {
+  display: block; 
+  width: 150px; 
+  padding: 10px; 
+  background-color: #333333; 
+  color: #ffffff; /* sets the text color of the buttons */
+  font-size: 16px; 
+  text-align: center; 
+  cursor: pointer; /* changes the cursor type on hover */
+  border-radius: 5px; 
+}
+
+
+button:hover {
+  background-color: #555555; /* Changes the background color on hover */
+}
+
+
+.services {
+  margin-bottom: 22px; 
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+
+.services h2 {
+  font-size: 24px; 
+  margin-bottom: 10px; 
+}
+
+
+.services p {
+  font-size: 16px; 
+  line-height: 1.5; 
+  margin-bottom: 20px; 
+}
+
+
+.homepage {
+  text-align: center; /* puts the homepage in the center */
+  margin-bottom: 22px; 
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); 
+}
+
+
+.homepage h1 {
+  font-size: 28px; /* Set the font size of headings in the homepage section */
+  margin-bottom: 10px; /* Add margin at the bottom of headings in the homepage section */
+}
+
+
+.homepage p {
+  font-size: 18px; /* Set the font size of paragraphs in the homepage section */
+  margin-bottom: 22px; /* Add margin at the bottom of paragraphs in the homepage section */
+}
+
+.btn {
+  display: inline-block;
+  padding: 10px 22px;
+  font-size: 16px;
+  text-align: center;
+  text-decoration: none; 
+  border-radius: 5px;
+  transition: background-color 0.3s ease; /* adds transition for the background color */
+}
+
+/*button stylings*/
+.btn-primary {
+  background-color: #333333; 
+  color: #ffffff; 
+  margin-right: 10px; 
+}
+
+
+.btn-secondary {
+  background-color: #eeeeee; 
+  color: #333333; 
+  margin-right: 10px; 
+}
+
+
+.btn:hover {
+  background-color: #555555;
+  color: #ffffff;  /*on hover change the background and text colors*/
+}
+
+
+.projects {
+  text-align: center; 
+  margin-bottom: 22px; 
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); 
+}
+
+
+
+.projects h1 {
+  font-size: 28px; 
+  margin-bottom: 10px;
+}
+
+
+
+.projects p {
+  font-size: 18px;
+  margin-bottom: 22px;
+}
+
+
+
+.project-list {
+  display: flex; /* uses flexbox to display projects in a row */
+  flex-wrap: wrap; /* wrap to the next row */
+  justify-content: center; 
+}
+
+
+
+.project {
+  width: 300px; 
+  padding: 22px; 
+  margin: 22px; 
+  border: 1px solid #dddddd; 
+  border-radius: 5px; 
+  text-align: center; 
+}
+
+
+
+.project img {
+  width: 250px; /* sets image widths*/
+  height: auto; /* adjust the height of images */
+  margin-bottom: 10px; 
+}
+
+
+.project h2 {
+  font-size: 24px; 
+}
+
+
+
+.project p {
+  font-size: 16px; 
+  line-height: 1.5; 
+  margin-bottom: 10px;
+}
+
+/*panel styling*/
+
+.panel {
+  border: 1px solid #dddddd; 
+  border-radius: 5px; 
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); 
+}
+
+
+
+.panel-header {
+  background-color: #f8f9fa; 
+  padding: 10px 15px;
+  border-bottom: 1px solid #dddddd; /* adds a bottom border */
+}
+
+
+
+.panel-header h5 {
+  margin: 0;
+}
+
+
+
+.panel-body {
+  padding: 22px;
+}
+
+
+
+.panel-body ul {
+  list-style-type: none; /*removes the bullet points */
+  padding: 0; 
+}
+
+
+
+.panel-body ul li {
+  margin-bottom: 10px; 
+}

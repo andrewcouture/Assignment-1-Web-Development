@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <%- include('../partials/head'); %>
+</head>
+<body class="container">
+
+<header>
+  <%- include('../partials/header'); %>
+</header>
+
+<main>
+<!-- Panels with contact info -->
+  <div class="container">
+    <div class="panel">
+      <div class="panel-header">
+        <h5>Contact Information</h5>
+      </div>
+      <div class="panel-body">
+        <ul>
+          <li>Name: Andrew Couture</li>
+          <li>Email: Coutureandrew1@gmail.com</li>
+          <li>Phone: 416-389-1084</li>
+          <li>Bathurst, NB, Canada</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+
+
+
+<!-- Contact Form labels -->
+  <div class="contact-form">
+    <h1>Contact Me</h1>
+  </br>
+    <div id="contact-form">
+      <form>
+        <div class="form-group">
+          <label for="first-name">First Name:</label>
+          <input type="text" class="form-control" id="first-name" required>
+        </div>
+      </br>
+        <div class="form-group">
+          <label for="last-name">Last Name:</label>
+          <input type="text" class="form-control" id="last-name" required>
+        </div>
+      </br>
+        <div class="form-group">
+          <label for="contact-number">Contact Number:</label>
+          <input type="tel" class="form-control" id="contact-number" required>
+        </div>
+      </br>
+        <div class="form-group">
+          <label for="email">Email Address:</label>
+          <input type="email" class="form-control" id="email" required>
+        </div>
+      </br>
+        <div class="form-group">
+          <label for="message">Message:</label>
+          <textarea class="form-control" id="message" rows="5" required></textarea>
+        </div>
+      </br>
+        <button type="submit" class="btn btn-primary">Submit</button>
+      </form>
+    </div>
+  </br>
+  </div>
+</main>
+
+<footer>
+  <%- include('../partials/footer'); %>
+</footer>
+
+<!-- javascript to take the form info -->
+<script>
+  document.querySelector('form').addEventListener('submit', function(e) {
+    e.preventDefault(); //allows us to take info without form resubmission
+    
+    // collect the contact info
+    var firstName = document.getElementById('first-name').value;
+    var lastName = document.getElementById('last-name').value;
+    var contactNumber = document.getElementById('contact-number').value;
+    var email = document.getElementById('email').value;
+    var message = document.getElementById('message').value;
+    
+  });
+</script>
+
+</body>
+</html>
