@@ -33,6 +33,9 @@ mongoDB.once('open', () => {
 // sets view engine to ejs
 app.set('view engine', 'ejs');
 
+// Starts the server and listens on the specified port or default to 5000
+app.listen(process.env.PORT || 5000);
+
 // sets static files from the public directory to have the public url
 app.use('/public', express.static('public'));
 
@@ -125,9 +128,6 @@ app.post('/login', passport.authenticate('local', {
   failureRedirect: '/login',
   failureFlash: true,
 }));
-
-// Starts the server and listens on the specified port or default to 5000
-app.listen(process.env.PORT || 5000);
 
 //logout 
 app.get('/logout', function (req, res) {
