@@ -1,5 +1,5 @@
 const DB = {
-  URI: 'mongodb+srv://basicuser123:cPt8z8VBnACzv@cluster0.mongodb.net/User',
+  URI: 'mongodb+srv://basic123:<password>@cluster0.mongodb.net/<database>?retryWrites=true&w=majority',
   options: {
     useNewUrlParser: true,
     useUnifiedTopology: true

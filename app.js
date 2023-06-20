@@ -14,7 +14,7 @@ var localStrategy = passportLocal.Strategy;
 var flash = require('connect-flash');
 
 const mongoose = require('mongoose');
-const DB = require('./db');
+const DB = require('./config/db');
 const User = require('./models/user')
 
 const bodyParser = require('body-parser');
@@ -104,13 +104,13 @@ const newUser = new User({
   email: 'coutureandrew1@gmail.com',
 });
 
-newUser.save(function(err) {
-  if (err) {
-    console.error('Error saving user:', err);
-  } else {
+newUser.save()
+  .then(() => {
     console.log('User saved successfully!');
-  }
-});
+  })
+  .catch((err) => {
+    console.error('Error saving user:', err);
+  });
 
 app.get('/secure/contacts', isAuthenticated, function(req, res) {
   // Render the contacts page for authenticated users
