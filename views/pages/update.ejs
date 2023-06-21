@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <% include('../partials/head'); %>
+</head>
+<body class="container">
+
+<header>
+  <% include('../partials/header'); %>
+</header>
+
+<h1>Update Contact</h1>
+
+<form action="/update/<%= contact._id %>" method="POST">
+  <div class="form-group">
+    <label for="contactName">Contact Name</label>
+    <input type="text" class="form-control" id="contactName" name="contactName" value="<%= contact.contactName %>" required>
+  </div>
+  <div class="form-group">
+    <label for="contactNumber">Contact Number</label>
+    <input type="text" class="form-control" id="contactNumber" name="contactNumber" value="<%= contact.contactNumber %>" required>
+  </div>
+  <div class="form-group">
+    <label for="email">Email</label>
+    <input type="email" class="form-control" id="email" name="email" value="<%= contact.email %>" required>
+  </div>
+  <button type="submit" class="btn btn-primary">Update</button>
+  <a href="/secure/contacts" class="btn btn-secondary">Cancel</a>
+</form>
+
+<a href="../secure/contacts">Back to Contacts</a>
+
+</body>
+</html>

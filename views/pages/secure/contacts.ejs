@@ -11,11 +11,29 @@
 <body>
   <h1>Contacts</h1>
   
-  <ul>
-    <% contacts.forEach(User => { %>
-      <li><%= User.username %> - <%= User.email %></li>
-    <% }) %>
-  </ul>
+  <table>
+    <thead>
+      <tr>
+        <th>Contact Name</th>
+        <th>Contact Number</th>
+        <th>Email Address</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% contacts.sort((a, b) => a.contactName.localeCompare(b.contactName)).forEach(contact => { %>
+        <tr>
+          <td><%= contact.contactName %></td>
+          <td><%= contact.contactNumber %></td>
+          <td><%= contact.email %></td>
+          <td>
+            <a href="/update/<%= contact._id %>">Update</a>
+            <a href="/delete/<%= contact._id %>">Delete</a>
+          </td>
+        </tr>
+      <% }) %>
+    </tbody>
+  </table>
   
   <a href="/logout">Logout</a>
 </body>

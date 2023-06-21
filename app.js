@@ -12,11 +12,11 @@ var passport = require('passport');
 var passportLocal = require('passport-local');
 var localStrategy = passportLocal.Strategy;
 var flash = require('connect-flash');
-const passportLocalMongoose = require('passport-local-mongoose');
 
 const mongoose = require('mongoose');
 const DB = require('./config/db');
 const User = require('./models/user')
+const BusinessContact = require('./models/businessContacts')
 
 const bodyParser = require('body-parser');
 var app = express();
@@ -64,8 +64,6 @@ passport.deserializeUser(User.deserializeUser());
 // Define routes
 // Takes requests for each URL and renders each view from the pages directory
 
-
-
 // Index page
 app.get('/', function(req, res) {
   res.render('pages/index');
@@ -104,14 +102,6 @@ User.register(newUser, newUser.password, function(err,user){
     console.log(user + "1");
   }
 })
-// newUser.save()
-//   .then(() => {
-//     console.log('User saved successfully!');
-//   })
-//   .catch((err) => {
-//     console.error('Error saving user:', err);
-//   });
-
 
 function isAuthenticated(req, res, next) {
   if (req.isAuthenticated()) {
@@ -123,8 +113,8 @@ function isAuthenticated(req, res, next) {
 
 app.get('/secure/contacts', isAuthenticated, async function(req, res) {
   try {
-    const users = await User.find({}, 'username email')
-    res.render('pages/secure/contacts', { contacts: users })
+    const BusinessContactsArray = await BusinessContact.find({}, 'contactName contactNumber email')
+    res.render('pages/secure/contacts', { contacts: BusinessContactsArray })
   } catch (error) {
     console.error(error);
     res.status(500).send('Internal Server Error');
@@ -146,6 +136,65 @@ app.post('/login', passport.authenticate('local', {
 
 //logout 
 app.get('/logout', function (req, res) {
-  req.logout();
-  res.redirect('/');
+  req.logout(function(err) {
+    if (err) {
+      console.error(err);
+    }
+    res.redirect('/');
+  });
 });
+
+// Update contact
+app.get('/update/:id', isAuthenticated, async function(req, res) {
+  try {
+    const contactId = req.params.id;
+    const contact = await BusinessContact.findById(contactId);
+    if (!contact) {
+      // Contact with the given ID not found
+      return res.status(404).send('Contact not found');
+    }
+    res.render('pages/update', { contact: contact });
+  } catch (error) {
+    console.error(error);
+    res.status(500).send('Internal Server Error');
+  }
+});
+
+// Update form submit
+app.post('/update/:id', isAuthenticated, async function(req, res) {
+  try {
+    const contactId = req.params.id;
+    const { contactName, contactNumber, email } = req.body;
+    const updatedContact = await BusinessContact.findByIdAndUpdate(
+      contactId,
+      { contactName, contactNumber, email },
+      { new: true }
+    );
+    if (!updatedContact) {
+      // Contact with the given ID not found
+      return res.status(404).send('Contact not found');
+    }
+    res.redirect('/secure/contacts');
+  } catch (error) {
+    console.error(error);
+    res.status(500).send('Internal Server Error');
+  }
+});
+
+// Delete contact
+app.get('/delete/:id', isAuthenticated, async function(req, res) {
+  try {
+    const contactId = req.params.id;
+    await BusinessContact.findByIdAndRemove(contactId);
+    res.redirect('/secure/contacts');
+  } catch (error) {
+    console.error(error);
+    res.status(500).send('Internal Server Error');
+  }
+});
+
+
+
+
+
+
