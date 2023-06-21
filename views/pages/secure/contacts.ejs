@@ -1,17 +1,20 @@
-<!-- views/pages/secure/contacts.ejs -->
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Contacts</title>
+  <%- include('../../partials/head'); %>
 </head>
+<body class="container">
+
+<header>
+  <%- include('../../partials/header'); %>
+</header>
 <body>
   <h1>Contacts</h1>
   
   <ul>
-    <% contacts.forEach(function(contact) { %>
-      <li><%= contact.name %> - <%= contact.email %></li>
-    <% }); %>
+    <% contacts.forEach(User => { %>
+      <li><%= User.username %> - <%= User.email %></li>
+    <% }) %>
   </ul>
   
   <a href="/logout">Logout</a>

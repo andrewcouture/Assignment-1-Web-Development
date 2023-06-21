@@ -12,6 +12,7 @@ var passport = require('passport');
 var passportLocal = require('passport-local');
 var localStrategy = passportLocal.Strategy;
 var flash = require('connect-flash');
+const passportLocalMongoose = require('passport-local-mongoose');
 
 const mongoose = require('mongoose');
 const DB = require('./config/db');
@@ -20,6 +21,7 @@ const User = require('./models/user')
 const bodyParser = require('body-parser');
 var app = express();
 app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.json());
 
 mongoose.connect(DB.URI, { useNewUrlParser: true, useUnifiedTopology: true });
 
@@ -89,6 +91,28 @@ app.get('/contact', function(req, res) {
   res.render('pages/contact');
 });
 
+const newUser = new User({
+  username: 'andrewcouture',
+  password: 'password',
+  email: 'test@gmail.com',
+});
+
+User.register(newUser, newUser.password, function(err,user){
+  if(err){console.log(err)  }
+  else{
+    //A new user was saved
+    console.log(user + "1");
+  }
+})
+// newUser.save()
+//   .then(() => {
+//     console.log('User saved successfully!');
+//   })
+//   .catch((err) => {
+//     console.error('Error saving user:', err);
+//   });
+
+
 function isAuthenticated(req, res, next) {
   if (req.isAuthenticated()) {
     return next(); // User is authenticated, proceed to the next middleware or route handler
@@ -97,29 +121,20 @@ function isAuthenticated(req, res, next) {
   }
 }
 
-
-const newUser = new User({
-  username: 'coutureandrew',
-  password: 'andrew1234',
-  email: 'coutureandrew1@gmail.com',
-});
-
-newUser.save()
-  .then(() => {
-    console.log('User saved successfully!');
-  })
-  .catch((err) => {
-    console.error('Error saving user:', err);
-  });
-
-app.get('/secure/contacts', isAuthenticated, function(req, res) {
-  // Render the contacts page for authenticated users
-  res.render('pages/secure/contacts', { contacts: users })
+app.get('/secure/contacts', isAuthenticated, async function(req, res) {
+  try {
+    const users = await User.find({}, 'username email')
+    res.render('pages/secure/contacts', { contacts: users })
+  } catch (error) {
+    console.error(error);
+    res.status(500).send('Internal Server Error');
+  }
+  
 });
 
 // login page
-app.get('/login', function (req, res) {
-  res.render('pages/login');
+app.get('/login', function(req, res) {
+  res.render('pages/login', { message: req.flash('error') });
 });
 
 // Login form submit
