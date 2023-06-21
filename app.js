@@ -23,7 +23,9 @@ var app = express();
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
+//connects to mongoDB using the URI from our config file
 mongoose.connect(DB.URI, { useNewUrlParser: true, useUnifiedTopology: true });
+
 
 let mongoDB = mongoose.connection;
 mongoDB.on('error', console.error.bind(console, 'Connection Error:'));
@@ -41,22 +43,22 @@ app.listen(process.env.PORT || 5000);
 // sets static files from the public directory to have the public url
 app.use('/public', express.static('public'));
 
-// Middleware for session management
+//session management
 app.use(session({
   secret: 'your-secret-key',
   resave: false,
   saveUninitialized: false
 }));
 
-// Middleware for flash messages
+//flash messages
 app.use(flash());
 
 
-// Passport configuration
+// configures passport
 app.use(passport.initialize());
 app.use(passport.session());
 
-// Passport local strategy
+// local strategy
 passport.use(new localStrategy(User.authenticate()));
 passport.serializeUser(User.serializeUser());
 passport.deserializeUser(User.deserializeUser());
@@ -134,7 +136,7 @@ app.post('/login', passport.authenticate('local', {
   failureFlash: true,
 }));
 
-//logout 
+//logout to terminate previous login session 
 app.get('/logout', function (req, res) {
   req.logout(function(err) {
     if (err) {
@@ -144,13 +146,13 @@ app.get('/logout', function (req, res) {
     });
 });
 
-// Update contact
+// updates the user at the contact id
 app.get('/update/:id', isAuthenticated, async function(req, res) {
   try {
     const contactId = req.params.id;
     const contact = await BusinessContact.findById(contactId);
     if (!contact) {
-      // Contact with the given ID not found
+      //if contact id isnt in the db then we want alert user
       return res.status(404).send('Contact not found');
     }
     res.render('pages/update', { contact: contact });
@@ -160,7 +162,7 @@ app.get('/update/:id', isAuthenticated, async function(req, res) {
   }
 });
 
-// Update form submit
+// submits the update and finds by the id to update
 app.post('/update/:id', isAuthenticated, async function(req, res) {
   try {
     const contactId = req.params.id;
@@ -171,7 +173,7 @@ app.post('/update/:id', isAuthenticated, async function(req, res) {
       { new: true }
     );
     if (!updatedContact) {
-      // Contact with the given ID not found
+      //if contact id isnt in the db then we want alert user
       return res.status(404).send('Contact not found');
     }
     res.redirect('/secure/contacts');
@@ -182,8 +184,8 @@ app.post('/update/:id', isAuthenticated, async function(req, res) {
 });
 
 
-// Delete contact
-app.get('/delete/:id', isAuthenticated, async function(req, res) {
+// deletes contact at id
+app.get('/delete/:d', isAuthenticated, async function(req, res) {
   try {
     const contactId = req.params.id;
     await BusinessContact.findByIdAndRemove(contactId);
