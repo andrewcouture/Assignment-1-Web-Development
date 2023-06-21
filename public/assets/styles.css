@@ -17,10 +17,11 @@
 .navbar {
   background-color: #333;
   color: #fff;
-  padding: 10px;
+  padding:  20px;
   display: flex;
   justify-content: space-between;
   align-items: center;
+  margin-right: 1px; 
 }
 
 /* navbar brand styling */
@@ -39,15 +40,18 @@
 
 /* navigation items in the navbar */
 .navbar-nav .nav-item {
-  margin-right: 22px; /* Increase the margin-right value for more spacing */
+  margin-left: 30px;
+  margin-right: 0px; 
 }
 
 /* links in the navbar */
 .navbar-nav .nav-link {
   color: #fff;
+  margin-left: -5px;
   font-size: 16px;
   text-decoration: none;
   transition: color 0.3s ease;
+  white-space: nowrap;
 }
 
 /* margin adjustment for the last  link in the navbar */
@@ -375,3 +379,161 @@ button:hover {
 .panel-body ul li {
   margin-bottom: 10px; 
 }
+
+/* Contacts page specific styles */
+h1 {
+  margin-bottom: 20px;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+thead th {
+  background-color: #333;
+  color: #fff;
+  padding: 10px;
+}
+
+tbody td {
+  border-bottom: 1px solid #ccc;
+  padding: 10px;
+}
+
+tbody td:last-child {
+  text-align: center;
+}
+
+a {
+  color: #333;
+  text-decoration: none;
+  margin-left: 10px;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+a.delete {
+  color: #ff0000;
+}
+
+a.update {
+  color: #0066cc;
+}
+
+a.delete:hover, a.update:hover {
+  text-decoration: none;
+}
+
+.logout-button {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 10px;
+}
+
+.form-group {
+  margin-bottom: 15px;
+}
+
+a.btn {
+  display: inline-block;
+  padding: 10px 22px;
+  font-size: 16px;
+  text-align: center;
+  text-decoration: none;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+}
+
+.business-form {
+  background-color: #ffffff;
+  padding: 22px;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.business-form h1 {
+  font-size: 28px;
+  margin-bottom: 10px;
+}
+
+.business-form .form-group {
+  margin-bottom: 15px;
+}
+
+.business-form label {
+  font-weight: bold;
+  font-size: 16px;
+  display: block;
+}
+
+.business-form input,
+.business-form textarea {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #dddddd;
+  border-radius: 5px;
+  font-size: 16px;
+  margin-bottom: 10px;
+}
+
+.business-form textarea {
+  resize: vertical;
+}
+
+.business-form button {
+  display: block;
+  width: 150px;
+  padding: 10px;
+  background-color: #333333;
+  color: #ffffff;
+  font-size: 16px;
+  text-align: center;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+.business-form button:hover {
+  background-color: #555555;
+}
+
+.business-form a.btn {
+  display: inline-block;
+  padding: 10px 22px;
+  font-size: 16px;
+  text-align: center;
+  text-decoration: none;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+}
+
+.business-form a.btn-primary {
+  background-color: #333333;
+  color: #ffffff;
+  margin-right: 10px;
+}
+
+.business-form a.btn-secondary {
+  background-color: #eeeeee;
+  color: #333333;
+  margin-right: 10px;
+}
+
+.business-form a.btn:hover {
+  background-color: #555555;
+  color: #ffffff;
+}
+
+.business-form a.btn:last-child {
+  margin-left: 0;
+}
+
+.business-form .button-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 20px;
+}
+

@@ -141,7 +141,7 @@ app.get('/logout', function (req, res) {
       console.error(err);
     }
     res.redirect('/');
-  });
+    });
 });
 
 // Update contact
@@ -180,6 +180,7 @@ app.post('/update/:id', isAuthenticated, async function(req, res) {
     res.status(500).send('Internal Server Error');
   }
 });
+
 
 // Delete contact
 app.get('/delete/:id', isAuthenticated, async function(req, res) {

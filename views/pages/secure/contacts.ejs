@@ -20,6 +20,7 @@
         <th>Actions</th>
       </tr>
     </thead>
+    <!--Dynamically generates table rows for each contact in the given array and sorts alphabetically -->
     <tbody>
       <% contacts.sort((a, b) => a.contactName.localeCompare(b.contactName)).forEach(contact => { %>
         <tr>
@@ -28,13 +29,25 @@
           <td><%= contact.email %></td>
           <td>
             <a href="/update/<%= contact._id %>">Update</a>
-            <a href="/delete/<%= contact._id %>">Delete</a>
+            <a href="#" onclick="confirmDelete('<%= contact._id %>')">Delete</a>
           </td>
         </tr>
       <% }) %>
     </tbody>
   </table>
   
-  <a href="/logout">Logout</a>
+  <div class="logout-button">
+    <a href="/logout" class="btn btn-primary">Logout</a>
+  </div>
+
 </body>
+
+<script>
+  function confirmDelete(contactId) {
+    if (confirm("Are you sure you want to delete this contact?")) {
+      window.location.href = "/delete/" + contactId;
+    }
+  }
+</script>
+
 </html>
